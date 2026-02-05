@@ -1,7 +1,7 @@
 site_name: CharmsBot
 nav:
-  - Inicio: index.md
-  - Comandos: commands.md
+  - Home: index.md
+  - Commands: commands.md
   - Changelog: changelog.md
 
 extra_templates:
