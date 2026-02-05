@@ -169,10 +169,11 @@ CharmsBot is available in **English** and designed to support the international 
 
 ---
 
-## 📞 Support
+## 🤖 Add to Your Server
 
-For questions, bug reports, or feature requests:
-- **Discord Server**: [Join our community](https://discord.gg/YOUR_INVITE_HERE)
+[![Add to Discord](https://img.shields.io/badge/Add%20to%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/oauth2/authorize?client_id=1324908850431791184)
+
+[🔗 Click here to add CharmsBot to your server](https://discord.com/oauth2/authorize?client_id=1324908850431791184)
 
 ---
 
