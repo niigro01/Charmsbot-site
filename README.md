@@ -1,7 +1,7 @@
 # Charmsbot-site# CharmsBot
 
 <p align="center">
-  img src="https://i.imgur.com/rFp9GRo.png" alt="CharmsBot Logo" width="200"/>
+  <img src="https://i.imgur.com/rFp9GRo.png" alt="CharmsBot Logo" width="200"/>
 </p>
 
 **CharmsBot** is a comprehensive Discord bot designed for Tibia players to optimize their hunting experience. It provides advanced charm assignment calculations, element efficiency analysis, loot splitting, and various utility tools to help players maximize their damage output and manage their hunts efficiently.
