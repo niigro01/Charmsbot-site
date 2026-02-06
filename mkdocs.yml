@@ -1,4 +1,5 @@
 site_name: CharmsBot
+
 nav:
   - Home: index.md
   - Commands: commands.md
