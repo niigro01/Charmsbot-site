@@ -1,109 +1,318 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CharmsBot - Changelog</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Changelog • CharmsBot</title>
+
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    :root{
+      --bg:#0b1020;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.86);
+      --muted: rgba(255,255,255,0.58);
+      --accent:#49a6ff;
+      --btn:#5b2d84;
+      --btn2:#6d3aa0;
+      --shadow: 0 16px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box}
     body{
-      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-      color:#e4e4e4;
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 50% -100px, rgba(90,60,140,.45), transparent 60%),
+        radial-gradient(1000px 700px at 50% 120%, rgba(0,160,255,.20), transparent 55%),
+        var(--bg);
       min-height:100vh;
-      padding:40px 20px;
-      line-height:1.6;
+      padding:38px 18px 60px;
     }
-    .container{
-      max-width:900px;
-      margin:0 auto;
-      background: rgba(255,255,255,0.05);
-      border-radius:20px;
-      padding:40px;
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px 26px 30px;
       backdrop-filter: blur(10px);
-      border:1px solid rgba(255,255,255,0.1);
-      box-shadow:0 8px 32px rgba(0,0,0,0.3);
     }
+
     h1{
+      margin: 6px 0 8px;
       text-align:center;
-      font-size:2.5em;
-      margin-bottom:10px;
-      background: linear-gradient(90deg, #00d4ff, #7b2cbf);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
+      font-size: 48px;
+      line-height:1.05;
+      color: var(--accent);
+      font-weight: 800;
     }
+
     .subtitle{
       text-align:center;
-      color:#888;
-      font-size:1.1em;
-      margin-bottom:30px;
-      padding-bottom:20px;
-      border-bottom:1px solid rgba(255,255,255,0.1);
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size: 18px;
     }
-    /* Top navigation */
-    .nav {
-      display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
-      margin: 10px 0 30px 0;
+
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,0.10);
+      margin: 22px 0 26px;
     }
+
+    .nav{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin: 0 0 22px;
+    }
+
     .nav a{
       text-decoration:none;
-      background: rgba(123, 44, 191, 0.22);
-      color:#c77dff;
-      padding:10px 18px;
-      border-radius:16px;
-      font-size:1.0em;
-      border:1px solid rgba(123, 44, 191, 0.35);
-      backdrop-filter: blur(8px);
-      box-shadow:0 8px 18px rgba(0,0,0,0.25);
+      color: rgba(255,255,255,0.86);
+      background: rgba(91,45,132,0.65);
+      border: 1px solid rgba(160,120,220,0.35);
+      padding: 11px 18px;
+      border-radius: 16px;
       transition: transform .08s ease, background .08s ease;
+      font-weight: 600;
     }
-    .nav a:hover{ transform: translateY(-1px); background: rgba(123, 44, 191, 0.30); }
+    .nav a:hover{ transform: translateY(-1px); background: rgba(109,58,160,0.70); }
 
-    .feature-box{
-      background: rgba(0, 212, 255, 0.08);
-      border-left:4px solid #00d4ff;
-      padding:20px 25px;
-      border-radius:0 10px 10px 0;
-      margin: 15px 0;
+    /* Accordion */
+    .acc{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      margin-top: 6px;
     }
-    a.version{
-      display:block;
-      text-decoration:none;
-      margin:10px 0;
-      color:#00d4ff;
-      font-weight:800;
-      font-size:1.1em;
-    }
-    a.version:hover{ text-decoration:underline; }
 
-    @media (max-width:600px){
-      .container{ padding:25px 20px; }
-      h1{ font-size:2em; }
+    .acc-item{
+      border: 1px solid rgba(0,212,255,0.18);
+      background: rgba(0,212,255,0.06);
+      border-radius: 16px;
+      overflow:hidden;
+    }
+
+    .acc-btn{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 16px 16px;
+      background: transparent;
+      border: 0;
+      color: #00d4ff;
+      font-size: 20px;
+      font-weight: 800;
+      cursor:pointer;
+      text-align:left;
+    }
+
+    .acc-btn .left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .pill{
+      font-size: 12px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+
+    .chev{
+      width:34px;height:34px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,212,255,0.25);
+      background: rgba(0,212,255,0.10);
+      display:grid;place-items:center;
+      transition: transform .15s ease;
+      flex: 0 0 auto;
+    }
+    .chev svg{width:16px;height:16px;fill:#00d4ff}
+
+    .acc-item[data-open="true"] .chev{ transform: rotate(180deg); }
+
+    .acc-panel{
+      display:none;
+      padding: 0 12px 12px;
+    }
+    .acc-item[data-open="true"] .acc-panel{ display:block; }
+
+    .frame{
+      width: 100%;
+      border: 0;
+      border-radius: 14px;
+      background: rgba(0,0,0,0.15);
+      overflow:hidden;
+      /* height se ajusta con JS */
+      height: 420px;
+    }
+
+    .hint{
+      margin-top: 10px;
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+      text-align:center;
+    }
+
+    @media (max-width: 600px){
+      h1{ font-size: 40px; }
+      .wrap{ padding: 26px 14px 20px; }
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
+  <div class="wrap">
     <h1>Changelog</h1>
     <p class="subtitle">Release history (HTML format)</p>
 
+    <div class="divider"></div>
+
     <div class="nav">
-  <a href="../">Home</a>
-  <a href="../commands/">Commands</a>
-  <a href="../changelog/">Changelog</a>
-  <a href="../contact/">Contact</a>
-  <a href="../legal/">Legal</a>
-</div>
-
-
-
-    <div class="feature-box">
-      <a class="version" href="../changelog_html/v0.1.0.html">v0.1.0</a>
-      <a class="version" href="../changelog_html/v1.0.0.html">v1.0.0</a>
-      <a class="version" href="../changelog_html/v1.5.0.html">v1.5.0</a>
-      <a class="version" href="../changelog_html/v2.0.0.html">v2.0.0</a>
+      <a href="../">Home</a>
+      <a href="../commands/">Commands</a>
+      <a href="./">Changelog</a>
+      <a href="../contact/">Contact</a>
+      <a href="../legal/">Legal</a>
     </div>
+
+    <div class="acc" id="acc">
+      <!-- v0.1.0 -->
+      <div class="acc-item" data-open="false">
+        <button class="acc-btn" type="button" data-target="v010">
+          <span class="left">v0.1.0 <span class="pill">Early 2025</span></span>
+          <span class="chev" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </span>
+        </button>
+        <div class="acc-panel" id="v010">
+          <iframe class="frame" src="../changelog_html/v0.1.0.html" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- v1.0.0 -->
+      <div class="acc-item" data-open="false">
+        <button class="acc-btn" type="button" data-target="v100">
+          <span class="left">v1.0.0 <span class="pill">2025</span></span>
+          <span class="chev" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </span>
+        </button>
+        <div class="acc-panel" id="v100">
+          <iframe class="frame" src="../changelog_html/v1.0.0.html" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- v1.5.0 -->
+      <div class="acc-item" data-open="false">
+        <button class="acc-btn" type="button" data-target="v150">
+          <span class="left">v1.5.0 <span class="pill">2025</span></span>
+          <span class="chev" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </span>
+        </button>
+        <div class="acc-panel" id="v150">
+          <iframe class="frame" src="../changelog_html/v1.5.0.html" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- v2.0.0 -->
+      <div class="acc-item" data-open="false">
+        <button class="acc-btn" type="button" data-target="v200">
+          <span class="left">v2.0.0 <span class="pill">Feb 2026</span></span>
+          <span class="chev" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+          </span>
+        </button>
+        <div class="acc-panel" id="v200">
+          <iframe class="frame" src="../changelog_html/v2.0.0.html" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <p class="hint">Tip: click a version to expand/collapse. Only one stays open.</p>
   </div>
+
+  <script>
+    // Only one open at a time + auto-resize iframes to their content height (same-origin)
+    const acc = document.getElementById("acc");
+    const items = Array.from(acc.querySelectorAll(".acc-item"));
+
+    function closeAll(exceptItem){
+      for (const it of items){
+        if (it !== exceptItem) it.dataset.open = "false";
+      }
+    }
+
+    function resizeFrame(frame){
+      try{
+        const doc = frame.contentDocument || frame.contentWindow.document;
+        if (!doc) return;
+        // wait a tick for layout
+        requestAnimationFrame(() => {
+          const h = Math.max(
+            doc.documentElement.scrollHeight || 0,
+            doc.body ? doc.body.scrollHeight : 0
+          );
+          if (h && h > 50) frame.style.height = (h + 12) + "px";
+        });
+      }catch(e){
+        // If not same-origin, ignore
+      }
+    }
+
+    // Click handling
+    acc.addEventListener("click", (e) => {
+      const btn = e.target.closest(".acc-btn");
+      if (!btn) return;
+
+      const item = btn.closest(".acc-item");
+      const isOpen = item.dataset.open === "true";
+
+      if (isOpen){
+        item.dataset.open = "false";
+        return;
+      }
+
+      closeAll(item);
+      item.dataset.open = "true";
+
+      // Resize iframe when opening
+      const frame = item.querySelector("iframe.frame");
+      if (frame){
+        if (frame.dataset.bound !== "1"){
+          frame.addEventListener("load", () => resizeFrame(frame));
+          frame.dataset.bound = "1";
+        }
+        // If already loaded, try now too
+        resizeFrame(frame);
+      }
+    });
+
+    // Optional: resize all loaded frames on window resize
+    window.addEventListener("resize", () => {
+      for (const it of items){
+        if (it.dataset.open === "true"){
+          const frame = it.querySelector("iframe.frame");
+          if (frame) resizeFrame(frame);
+        }
+      }
+    });
+  </script>
 </body>
 </html>
